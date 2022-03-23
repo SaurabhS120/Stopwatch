@@ -105,5 +105,8 @@ class MainActivity : AppCompatActivity() {
         pauseButton.setOnClickListener {
             timer.pauseTimer()
         }
+        lapButton.setOnClickListener {
+            textViewLapTime.text=textViewTime.text
+        }
     }
 }

@@ -17,6 +17,7 @@ class MainActivity : AppCompatActivity() {
         val stopButton = binding.buttonStop
         val pauseButton = binding.buttonPause
         val lapButton = binding.buttonLap
+        val lapClearButton = binding.buttonLapClear
         val handler = object : Handler(){
             override fun handleMessage(msg: Message) {
                 super.handleMessage(msg)
@@ -108,5 +109,9 @@ class MainActivity : AppCompatActivity() {
         lapButton.setOnClickListener {
             textViewLapTime.text=textViewTime.text
         }
+        lapClearButton.setOnClickListener {
+            textViewLapTime.text="00:00"
+        }
+
     }
 }

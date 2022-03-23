@@ -34,17 +34,17 @@
         android:layout_height="wrap_content"
         android:backgroundTint="@android:color/holo_green_light"
         android:text="@string/start"
-        app:layout_constraintBaseline_toBaselineOf="@+id/buttonFlag"
-        app:layout_constraintEnd_toStartOf="@+id/buttonFlag"
+        app:layout_constraintBaseline_toBaselineOf="@+id/buttonPause"
+        app:layout_constraintEnd_toStartOf="@+id/buttonPause"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/buttonFlag"
+        android:id="@+id/buttonPause"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:backgroundTint="@android:color/holo_orange_light"
-        android:text="@string/flag"
+        android:text="@string/Pause"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewTime" />
@@ -55,10 +55,10 @@
         android:layout_height="wrap_content"
         android:backgroundTint="@android:color/holo_red_light"
         android:text="@string/stop"
-        app:layout_constraintBaseline_toBaselineOf="@+id/buttonFlag"
+        app:layout_constraintBaseline_toBaselineOf="@+id/buttonPause"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.616"
-        app:layout_constraintStart_toEndOf="@+id/buttonFlag" />
+        app:layout_constraintStart_toEndOf="@+id/buttonPause" />
 
     <TextView
         android:id="@+id/textView"
@@ -73,11 +73,19 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:text="@string/lap_time"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonFlag" />
+        app:layout_constraintTop_toBottomOf="@+id/button" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Lap"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonPause" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

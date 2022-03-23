@@ -15,7 +15,8 @@ class MainActivity : AppCompatActivity() {
         val textViewLapTime = binding.textViewLapTime
         val startButton = binding.buttonStart
         val stopButton = binding.buttonStop
-        val flagButton = binding.buttonFlag
+        val pauseButton = binding.buttonPause
+        val lapButton = binding.buttonLap
         val handler = object : Handler(){
             override fun handleMessage(msg: Message) {
                 super.handleMessage(msg)
@@ -37,8 +38,8 @@ class MainActivity : AppCompatActivity() {
                     bundle.putString("minutes", getMinutes())
                     msg.data = bundle
                     handler.sendMessage(msg)
-                    time++
                     sleep(1000)
+                    time++
                 }
             }
             fun getSeconds():String{
@@ -58,27 +59,40 @@ class MainActivity : AppCompatActivity() {
                 return minuteString
             }
             fun startTimer() {
-                time = 0
-                stop = false
                 start()
             }
-
+            fun getCounter()=time
+            fun setCounter(counter:Int){
+                time=counter
+            }
             fun stopTimer() {
                 stop = true
             }
         }
         class Timer {
             var timerThread: TimerThread?=null
+            var lastTime=0
             fun startTimer() {
                 if (timerThread==null) {
                     timerThread = TimerThread()
                 }
+                timerThread?.setCounter(lastTime)
                 timerThread?.startTimer()
             }
-
-            fun stopTimer() {
+            fun pauseTimer(){
                 timerThread?.stopTimer()
+                lastTime=timerThread?.getCounter()?:0
                 timerThread=null
+            }
+            fun stopTimer() {
+                pauseTimer()
+                lastTime=0
+                val msg=Message()
+                val bundle = Bundle()
+                bundle.putString("minutes","00")
+                bundle.putString("seconds","00")
+                msg.data=bundle
+                handler.sendMessage(msg)
             }
         }
         val timer=Timer()
@@ -87,6 +101,9 @@ class MainActivity : AppCompatActivity() {
         }
         stopButton.setOnClickListener {
             timer.stopTimer()
+        }
+        pauseButton.setOnClickListener {
+            timer.pauseTimer()
         }
     }
 }

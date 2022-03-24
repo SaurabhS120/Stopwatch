@@ -29,4 +29,10 @@ class MainActivityViewModel: ViewModel() {
         time.value?.reset()
         time.postValue(time.value)
     }
+    fun lap(){
+        lapTime.postValue(time.value)
+    }
+    fun clearLap(){
+        lapTime.postValue(Time())
+    }
 }

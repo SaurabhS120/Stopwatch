@@ -30,13 +30,16 @@ class MainActivity : AppCompatActivity() {
             viewModel.pauseTimer()
         }
         lapButton.setOnClickListener {
-            textViewLapTime.text=textViewTime.text
+            viewModel.lap()
         }
         lapClearButton.setOnClickListener {
-            textViewLapTime.setText(R.string.zero_time)
+            viewModel.clearLap()
         }
         viewModel.time.observe(this){
-            textViewTime.setText(it.toString())
+            textViewTime.text=it.toString()
+        }
+        viewModel.lapTime.observe(this){
+            textViewLapTime.text=it.toString()
         }
 
     }
